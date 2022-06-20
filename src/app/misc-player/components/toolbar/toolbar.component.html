@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div>
+    <ng-container *ngIf="loggedIn">
+      <button mat-button color="primary" (click)="logout()">LogOut</button>
+    </ng-container>
+    <ng-container *ngIf="!loggedIn">
+      <button mat-button color="primary" (click)="registerNow()">Register</button>
+      <button mat-button color="accent" (click)="loginNow()">Login</button>
+    </ng-container>
+  </div>
+</mat-toolbar>

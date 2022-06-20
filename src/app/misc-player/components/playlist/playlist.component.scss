@@ -1,0 +1,10 @@
+@import '../../../../colors.scss';
+
+.hello-user{
+    padding-top: 15px;
+    font-size: 85px;
+
+    span{
+        color: $accent;
+    }
+}

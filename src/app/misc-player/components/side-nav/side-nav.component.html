@@ -1,0 +1,54 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav
+    #sidenav
+    class="app-sidenav mat-elevation-z0"
+    [opened]="false"
+    [mode]="isScreenSmall ? 'over' : 'over'"
+  >
+    <mat-toolbar>Music</mat-toolbar>
+    <!-- <mat-list role="list"> -->
+    <!-- <mat-list-item role="listitem"> -->
+    <div class="button-flex">
+      <button mat-button class="button-flex-items" (click)="toggleNow()">
+        <div class="button-flex-item">Now Playing</div>
+      </button>
+      <button mat-button class="button-flex-items" (click)="toggleNew()">
+        <div class="button-flex-item">New Releases</div>
+      </button>
+      <button mat-button class="button-flex-items" (click)="togglePlay()">
+        <div class="button-flex-item">Playlist</div>
+      </button>
+      <button mat-button class="button-flex-items" (click)="toggleAll()">
+        <div class="button-flex-item">All Songs</div>
+      </button>
+    </div>
+    <!-- New -->
+    <!-- </mat-list-item> -->
+    <!-- <mat-list-item role="listitem"> -->
+    <!-- Playlist -->
+    <!-- </mat-list-item> -->
+    <!-- <mat-list-item role="listitem"> -->
+    <!-- All -->
+    <!-- </mat-list-item> -->
+    <!-- </mat-list> -->
+  </mat-sidenav>
+
+  <div class="app-sidenav-content">
+    <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <!-- <input class="slider" type="range" min="0" [max]="0" [value]="50" /> -->
+    <!-- <mat-slider
+      class="slider"
+      type="range"
+      min="0"
+      [max]="100"
+      [value]="50"
+    ></mat-slider> -->
+    <app-music-bar class="music-bar-flex"></app-music-bar>
+  </div>
+</mat-sidenav-container>

@@ -1,0 +1,99 @@
+@import '../../../../colors.scss';
+
+.song-cards {
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-around;
+
+  // justify-content: flex-start;
+  // align-content: space-between;
+
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, 219px);
+  justify-content: space-around;
+  grid-gap: 25px;
+}
+
+mat-card {
+  width: 210px;
+
+  margin-top: 30px;
+  padding: 0 0 16px 0;
+}
+.song-name {
+  margin-bottom: 2px;
+}
+.song-name,
+.song-author {
+  margin-left: 15px;
+}
+
+.song-author {
+  color: rgb(175, 183, 190);
+}
+mat-card-actions {
+  padding-right: 16px;
+}
+
+mat-card-header {
+  padding: 0 16px 0 16px;
+}
+
+.mat-card-image {
+  display: block;
+  width: 100%;
+  height: 180px;
+  margin: 0 0 0 0;
+  z-index: 1;
+}
+
+mat-card-actions {
+  float: right;
+}
+
+.play-circle {
+  font-size: 60px;
+  margin-left: 68%;
+  margin-top: -30px;
+  transition: transform 0.2s;
+  cursor: pointer;
+  color: #7b1fa2;
+  color: $accent;
+  // border-radius: 50%;
+}
+
+.play-circle:hover {
+  transform: scale(1.05);
+  // box-shadow: 0 5px 15px rgba(224, 224, 224, 0.8);
+}
+
+@media screen and (max-width: 746px) {
+  .song-cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+  }
+
+  mat-card {
+    width: 180px;
+  }
+  .play-circle {
+    font-size: 55px;
+    margin-left: 66%;
+    margin-top: -28px;
+  }
+
+}
+
+@media screen and (max-width: 424px) {
+  .song-cards {
+    grid-template-columns: repeat(auto-fill, 176px);
+  }
+
+  mat-card {
+    width: 180px;
+  }
+}
+
+mat-card:hover {
+  background-color: #212121;
+}

@@ -1,0 +1,82 @@
+mat-toolbar-row {
+  justify-content: center;
+}
+
+.songInfo {
+  align-self: center;
+  display: flex;
+}
+
+.songIcon {
+  align-self: center;
+}
+
+.currentTime {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexSlider {
+  flex-grow: 3;
+}
+
+.duration {
+  flex-grow: 1;
+}
+
+.play-icon,
+.pause-icon,
+.stop-icon {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.next-icon,
+.prev-icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.play-div,
+.pause-div,
+.stop-div,
+.next-div,
+.prev-div {
+  width: 50px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  // border-radius: 5px;
+  margin: 0;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}

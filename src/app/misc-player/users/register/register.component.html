@@ -1,0 +1,96 @@
+<!-- <div class="container">
+    <form [formGroup]="myForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter email">
+            <span class="sp" *ngIf="isValid('email')">
+                <p class="mb-1" style="color: red;">Entered email is invalid</p>
+            </span>
+            <label for="username">User name</label>
+            <input type="text" formControlName="username" class="form-control" id="username"
+                aria-describedby="emailHelp" placeholder="Enter Username">
+            <span class="sp" *ngIf="isValid('username')">
+                <p class="mb-1" style="color: red;">Username is required</p>
+            </span>
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1"
+                placeholder="Password">
+            <span class="sp" *ngIf="isValid('password')">
+                <p class="mb-1" style="color: red;">Password is required</p>
+            </span>
+
+            <label for="exampleInputPassword2">Re-enter Password</label>
+            <input type="password" formControlName="cnfpass" class="form-control" id="exampleInputPassword2"
+                placeholder="Re-enter Password">
+            <span class="sp" *ngIf="isValid('cnfpass')">
+                <p class="mb-1" style="color: red;">Passwords do not match</p>
+            </span>
+
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+        <div class="container">
+            {{successMsg}}
+        </div>
+        <button class="btn btn-info mb-2 mt-2" (click)="movetologin()">Login</button>
+    </form>
+</div> -->
+
+<div class="form-container">
+    <form [formGroup]="myForm" (ngSubmit)="register()">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput maxlength="15" minlength="5" inputmode="tel" placeholder="Type name" formControlName="username"
+                #nameInput>
+            <mat-icon class="mat-padding-reg" matSuffix>account_circle</mat-icon>  
+            <mat-hint class="mb-1">
+                <ng-container *ngIf="nameInput.value.length < 5">
+                    <p class="min_char">
+                        Minimum character (5): {{ nameInput.value.length }}/5
+                    </p>
+                </ng-container>
+            </mat-hint>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Email Address:</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Your email">
+            <mat-icon class="mat-padding-reg" matSuffix>mail_outline</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput formControlName="cnfpass" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint class="mb-1">
+                <ng-container class="sp" *ngIf="isValid('cnfpass')">
+                    <p class="mb-1" style="color: red;">Passwords do not match</p>
+                </ng-container>
+            </mat-hint>
+        </mat-form-field>
+        <!-- <span class="sp" *ngIf="isValid('cnfpass')">
+            <p class="mb-1" style="color: red;">Passwords do not match</p>
+        </span> -->
+
+        <div mat-dialog-actions>
+            <button class="mt-1" mat-raised-button color="primary" type="submit" [disabled]="!myForm.valid">Submit</button>
+        </div>
+        <ng-container *ngIf="regTrue">{{successMsg}}</ng-container>
+    </form>
+    <!-- <div>{{ myForm.value | json }}</div> -->
+</div>

@@ -1,0 +1,95 @@
+<!-- <div class="play-div">
+  <div class="play-prev">⏪</div>
+</div>
+
+<div class="play-div">
+  <div class="play-btn">▶️</div>
+</div>
+
+<div class="play-div">
+  <div class="play-next">⏩</div>
+</div> -->
+
+<div class="media-footer">
+  <mat-toolbar color="primary">
+    <!-- <input
+      type="range"
+      min="1"
+      max="100"
+      value="50"
+      class="slider"
+      id="myRange"
+    /> -->
+    <ng-container *ngIf="currentSongUrl == 'none'; else playSong">
+      <div class="songInfo">
+        <mat-icon class="songIcon">music_note</mat-icon>
+        <span class="songName"> --- </span>
+      </div>
+    </ng-container>
+    <ng-template #playSong>
+      <div class="songInfo">
+        <mat-icon class="songIcon">music_note</mat-icon>
+        <span class="songName"> {{ name }}.mp3 </span>
+      </div>
+    </ng-template>
+    <mat-toolbar-row>
+      <div class="currentTime">
+        <span class="curT">
+          {{ currentTime }}
+        </span>
+      </div>
+      <mat-slider
+        class="flexSlider"
+        type="range"
+        min="0"
+        [max]="seekToDuration"
+        [value]="seek"
+        (input)="setSeekTo($event)"
+      ></mat-slider>
+      <div class="duration">
+        <ng-container
+          class="durT"
+          *ngIf="duration == 'Invalid date'; else actualDuration"
+        >
+          00:00
+        </ng-container>
+        <ng-template class="durT" #actualDuration>
+          {{ duration }}
+        </ng-template>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="media-action-bar">
+      <div class="prev-div" mat-button>
+        <mat-icon mat-list-icon class="prev-icon">skip_previous</mat-icon>
+      </div>
+      <!-- <button mat-button [disabled]="isFirstPlaying()" (click)="previous()">
+        <mat-icon mat-list-icon>skip_previous</mat-icon>
+      </button> -->
+
+      <ng-container *ngIf="playing == 0; else pauseIcon">
+        <div class="play-div" mat-button (click)="play()">
+          <mat-icon mat-list-icon class="play-icon"
+            >play_circle_filled</mat-icon
+          >
+        </div>
+      </ng-container>
+
+      <ng-template #pauseIcon>
+        <div class="pause-div" mat-button (click)="pause()">
+          <mat-icon mat-list-icon class="pause-icon">pause</mat-icon>
+        </div>
+      </ng-template>
+
+      <div class="stop-div" mat-button (click)="stop()">
+        <mat-icon class="stop-icon">stop</mat-icon>
+      </div>
+
+      <div class="next-div" mat-button>
+        <mat-icon mat-list-icon class="next-icon">skip_next</mat-icon>
+      </div>
+      <!-- <button mat-button [disabled]="isLastPlaying()" (click)="next()">
+        <mat-icon mat-list-icon>skip_next</mat-icon>
+      </button> -->
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
